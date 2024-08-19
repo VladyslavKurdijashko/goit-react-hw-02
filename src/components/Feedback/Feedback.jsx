@@ -1,18 +1,14 @@
 import PropTypes from "prop-types";
 
-const Feedback = ({ feedback }) => {
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positivePercentage =
-    Math.round((feedback.good / totalFeedback) * 100) || 0;
-
+const Feedback = ({ feedback, total, positivePercentage }) => {
   return (
     <div>
-      <h2>Feedback Summary</h2>
+      <h2>Statistics</h2>
       <p>Good: {feedback.good}</p>
       <p>Neutral: {feedback.neutral}</p>
       <p>Bad: {feedback.bad}</p>
-      <p>Total Feedback: {totalFeedback}</p>
-      <p>Positive Feedback: {positivePercentage}%</p>
+      <p>Total: {total}</p>
+      <p>Positive feedback: {positivePercentage}%</p>
     </div>
   );
 };
@@ -23,6 +19,8 @@ Feedback.propTypes = {
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
   }).isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Feedback;
